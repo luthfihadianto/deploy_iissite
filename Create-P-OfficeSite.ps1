@@ -23,17 +23,7 @@ Set-ItemProperty IIS:\AppPools\$($AppPoolName) -name processModel -value @{userN
 $Path = "C:\inetpub\apps\" + $ApplicationName.ToLower()
 
 $WebAppName = $ApplicationName 
-#$HostHeader = $ApplicationName.ToLower() + "." + $Domain
-#$HostHeader = $Domain
 $HostHeader = $ApplicationName
 
-#New-WebSite -Name $WebAppName -Port 443 -HostHeader $HostHeader -PhysicalPath $Path -ApplicationPool $AppPoolName -Ssl
-
+New-WebSite -Name $WebAppName -Port 443 -HostHeader $HostHeader -PhysicalPath $Path -ApplicationPool $AppPoolName
 New-WebSite -Name $WebAppName -Port 80 -HostHeader $HostHeader -PhysicalPath $Path -ApplicationPool $AppPoolName
-
-#$binding = Get-WebBinding -Name $WebAppName
-#$certificate = Get-ChildItem Cert:\LocalMachine\My\ 
-#if($CertTumbPrint = $certificate[0].Thumbprint)
-#{
-#    $binding.AddSslCertificate($certificate[0].Thumbprint,"my")
-#}
