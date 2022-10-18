@@ -25,5 +25,5 @@ $Path = "C:\inetpub\apps\" + $ApplicationName.ToLower()
 $WebAppName = $ApplicationName 
 $HostHeader = $ApplicationName
 
-New-WebSite -Name $WebAppName -Port 443 -HostHeader $HostHeader -PhysicalPath $Path -ApplicationPool $AppPoolName
 New-WebSite -Name $WebAppName -Port 80 -HostHeader $HostHeader -PhysicalPath $Path -ApplicationPool $AppPoolName
+New-WebSite -Name $WebAppName -Port 443 -HostHeader $HostHeader -PhysicalPath $Path -ApplicationPool $AppPoolName -ssl
